@@ -32,7 +32,7 @@ tmpPath="/tmp/$(basename $0)"
 # Otherwise, execute this script directly
 if [ $0 != $tmpPath ]; then
     # Prompt asking to install TES3MP first before creating xterm
-    zenity --question --ellipsize --text 'Would you like to install TES3MP?'
+    zenity --question --ellipsize --text 'Would you like to install TES3MP-Mumble?'
 
     # Exit if user hit 'no'
     if [ "$?" == "1" ]; then
@@ -50,7 +50,7 @@ fi
 if [ ! -f /etc/subuid ] && [ ! -f /etc/subgid ]
 then
     # Prompt asking to create /etc/subuid and /etc/subgid (requires root)
-    zenity --question --text "The files /etc/subuid and /etc/subgid do not exist on your system, which is required to run Distrobox, the tool that will run TES3MP. Would you like to create them now? (note that this will require root permission)" --width 700
+    zenity --question --text "The files /etc/subuid and /etc/subgid do not exist on your system, which is required to run Distrobox, the tool that will run TES3MP-Mumble. Would you like to create them now? (note that this will require root permission)" --width 700
 
     # Exit if user hit 'no'
     if [ "$?" == "1" ]; then
@@ -65,7 +65,7 @@ then
 elif [ ! -f /etc/subuid ]
 then
     # Prompt asking to create /etc/subuid (requires root)
-    zenity --question --text "The file /etc/subuid does not exist on your system, which is required to run Distrobox, the tool that will run TES3MP. Would you like to create it now? (note that this will require root permission)" --width 700
+    zenity --question --text "The file /etc/subuid does not exist on your system, which is required to run Distrobox, the tool that will run TES3MP-Mumble. Would you like to create it now? (note that this will require root permission)" --width 700
 
     # Exit if user hit 'no'
     if [ "$?" == "1" ]; then
@@ -77,7 +77,7 @@ then
 elif [ ! -f /etc/subgid ]
 then
     # Prompt asking to create /etc/subuid (requires root)
-    zenity --question --text "The file /etc/subgid does not exist on your system, which is required to run Distrobox, the tool that will run TES3MP. Would you like to create it now? (note that this will require root permission)" --width 700
+    zenity --question --text "The file /etc/subgid does not exist on your system, which is required to run Distrobox, the tool that will run TES3MP-Mumble. Would you like to create it now? (note that this will require root permission)" --width 700
 
     # Exit if user hit 'no'
     if [ "$?" == "1" ]; then
@@ -88,22 +88,22 @@ then
     pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY sh -c "printf '$USER:100000:65536' | tee /etc/subgid >/dev/null 2>&1"
 fi
 
-installpath=$HOME/Games/tes3mp
-installName="TES3MP Container Install"
+installpath=$HOME/Games/tes3mp-mumble
+installName="TES3MP-Mumble Container Install"
 distroboxDir=$HOME/.local/bin
-containerName="ubuntu-tes3mp-22-04"
+containerName="ubuntu-tes3mp-mumble-22-04"
 
 # 2) Download tes3mp
 if [ -d "$installpath" ]
 then
-    echo "TES3MP already installed at $installpath."
+    echo "TES3MP-Mumble already installed at $installpath."
 else
-    echo "Downloading TES3MP..."
-    notify-send -a "$installName" "Downloading TES3MP..."
-    wget -O /tmp/tes3mp-client-linux.tar.gz https://github.com/TES3MP/TES3MP/releases/download/tes3mp-0.8.1/tes3mp-GNU+Linux-x86_64-release-0.8.1-68954091c5-6da3fdea59.tar.gz
+    echo "Downloading TES3MP-Mumble..."
+    notify-send -a "$installName" "Downloading TES3MP-Mumble.."
+    wget -O https://github.com/FakeSalamander/TES3MP-mumble/releases/download/0.8.1-mumble-rev2/tes3mp-mumble-GNU+Linux-x86_64-release-0.8.1-2799b518c4-d7d71d635c.tar.gz
 
     # 2) Extract + move to the install path
-    tar -xzf /tmp/tes3mp-client-linux.tar.gz
+    tar -xzf /tmp/tes3mp-mumble-client-linux.tar.gz
     mkdir -p $installpath
     mv TES3MP $installpath
 fi
@@ -227,7 +227,7 @@ chmod +x $installpath/tes3mp-server.sh
 chmod +x $installpath/tes3mp-client-cfg.sh
 
 # 11) Create TES3MP Client desktop shortcut
-cat > ~/.local/share/applications/TES3MP\ Client.desktop << EOF
+cat > ~/.local/share/applications/TES3MP-Mumble\ Client.desktop << EOF
 [Desktop Entry]
 Comment[en_US]=
 Comment=
@@ -236,8 +236,8 @@ GenericName[en_US]=
 GenericName=
 Icon=system-run
 MimeType=
-Name[en_US]=TES3MP Client
-Name=TES3MP Client
+Name[en_US]=TES3MP-Mumble Client
+Name=TES3MP-Mumble Client
 Path=
 StartupNotify=true
 Terminal=true
@@ -251,7 +251,7 @@ Categories=Game;
 EOF
 
 # 12) Create TES3MP Server desktop shortcut
-cat > ~/.local/share/applications/TES3MP\ Server.desktop << EOF
+cat > ~/.local/share/applications/TES3MP-Mumble\ Server.desktop << EOF
 [Desktop Entry]
 Comment[en_US]=
 Comment=
@@ -260,8 +260,8 @@ GenericName[en_US]=
 GenericName=
 Icon=system-run
 MimeType=
-Name[en_US]=TES3MP Server
-Name=TES3MP Server
+Name[en_US]=TES3MP-Mumble Server
+Name=TES3MP-Mumble Server
 Path=
 StartupNotify=true
 Terminal=true
@@ -275,7 +275,7 @@ Categories=Game;
 EOF
 
 # 13) Create TES3MP Client Config desktop shortcut
-cat > ~/.local/share/applications/TES3MP\ Client\ Config.desktop << EOF
+cat > ~/.local/share/applications/TES3MP-Mumble\ Client\ Config.desktop << EOF
 [Desktop Entry]
 Comment[en_US]=
 Comment=
@@ -284,8 +284,8 @@ GenericName[en_US]=
 GenericName=
 Icon=system-run
 MimeType=
-Name[en_US]=TES3MP Client Config
-Name=TES3MP Client Config
+Name[en_US]=TES3MP-Mumble Client Config
+Name=TES3MP-Mumble Client Config
 Path=
 StartupNotify=true
 Terminal=false
@@ -299,7 +299,7 @@ Categories=Game;
 EOF
 
 # 14) Optionally run wizard
-if zenity --question --ellipsize --text "Installation complete. Would you like to run the TES3MP Setup Wizard?"
+if zenity --question --ellipsize --text "Installation complete. Would you like to run TES3MP-Mumble's Setup Wizard?"
 then
     cd $installpath/TES3MP
     ./openmw-wizard

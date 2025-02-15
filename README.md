@@ -1,7 +1,7 @@
 # TES3MP Container Install Script
 An install script to play the Mumble-Link fork of TESMP ([TES3MP-Mumble]([https://github.com/TES3MP/TES3MP](https://github.com/FakeSalamander/TES3MP-mumble))) painlessly on the Steam Deck and other immutable distros, based on (jefetienne's script for doing the same thing for base TES3MP)[https://github.com/jefetienne/tes3mp-container-install].
 
-TES3MP is a project that brings a multiplayer co-op experience for Morrowind. TES3MP-Mumble is a fork of TES3MP that adds support for the Mumble Link Plugin in order to play the game with proximity voice chat on Mumble servers. Simply download the tes3mp-mumble-container-install.sh file and double-click to run it. Recommended to have Morrowind installed first prior to running the script so that Morrowind.esm can be selected in the TES3MP Setup Wizard.
+TES3MP is a project that brings a multiplayer co-op experience for Morrowind. TES3MP-Mumble is a fork of TES3MP that adds support for the Mumble Link Plugin in order to play the game with proximity voice chat on Mumble servers. Simply download the tes3mp-container-install-mumble.sh file and double-click to run it. Recommended to have Morrowind installed first prior to running the script so that Morrowind.esm can be selected in the TES3MP Setup Wizard.
 
 # Features
 - Downloads and installs TES3MP, along with rootless [Distrobox+Podman](https://github.com/89luca89/distrobox) to run TES3MP through it (if it is not installed in your root directly already). **Note** that you may need root permission to get two system files (`/etc/subuid` and `/etc/subgid`) created for Distrobox if they do not exist already.
